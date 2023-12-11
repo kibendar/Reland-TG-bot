@@ -1,0 +1,30 @@
+<reland_objects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="reland_objects.xsd">
+  <reland_object object_id="I-1234">
+    <properties>
+      <title>1</title>
+      <url_presentation>1</url_presentation>
+      <floors>1</floors>
+      <m2>1</m2>
+    </properties>
+
+    <location>
+      <waterside>2</waterside>
+      <borough>3</borough>
+      <metro>3</metro>
+      <street>3</street>
+    </location>
+
+    <realtor realtor_id="I-1246">
+      <name>3</name>
+      <phone_number>1</phone_number>
+      <email>3</email>
+    </realtor>
+    <user user_id="I-123">
+      <username>1</username>
+      <full_name>1</full_name>
+      <email>1</email>
+      <phone_number>1</phone_number>
+    </user>
+  </reland_object>
+</reland_objects>

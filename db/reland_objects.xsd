@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<!--    datatype's validator-->
+
+    <xsd:simpleType name="realtor_id">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="I-(\d{4})"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="object_id">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="I-(\d{4})"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="user_id">
+        <xsd:restriction base="xsd:ID">
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="left_or_right_waterside">
+        <xsd:restriction base="xsd:boolean">
+        </xsd:restriction>
+    </xsd:simpleType>
+
+<!--    location's validator-->
+
+    <xsd:complexType name="location_validator">
+        <xsd:sequence>
+            <xsd:element name="waterside" />
+            <xsd:element name="borough" type="xsd:string"/>
+            <xsd:element name="metro" type="xsd:string"/>
+            <xsd:element name="street" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+<!--    realtor's validator-->
+    <xsd:complexType name="realtor_validator">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="phone_number" type="xsd:integer"/>
+            <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="realtor_id" type="realtor_id"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="user_validator">
+        <xsd:sequence>
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="full_name" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
+            <xsd:element name="phone_number" type="xsd:integer"/>
+        </xsd:sequence>
+        <xsd:attribute name="user_id" type="user_id"/>
+    </xsd:complexType>
+
+<!--    properties validator-->
+    <xsd:complexType name="properties_validator">
+        <xsd:sequence>
+            <xsd:element name="title" type="xsd:string"/>
+            <xsd:element name="url_presentation" type="xsd:string"/>
+            <xsd:element name="floors" type="xsd:integer"/>
+            <xsd:element name="m2" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+<!--    main validation-->
+    <xsd:complexType name="reland_object">
+            <xsd:sequence>
+                <xsd:element name="properties" type="properties_validator"/>
+                <xsd:element name="location" type="location_validator"/>
+                <xsd:element name="realtor" type="realtor_validator"/>
+                <xsd:element name="user" type="user_validator"/>
+            </xsd:sequence>
+        <xsd:attribute name="object_id" type="object_id"/>
+    </xsd:complexType>
+
+
+    <xsd:element name="reland_objects" >
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="reland_object" type="reland_object" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
